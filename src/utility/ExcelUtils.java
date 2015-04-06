@@ -15,7 +15,13 @@ public class ExcelUtils {
 	private static XSSFWorkbook ExcelWBook;
 	private static org.apache.poi.ss.usermodel.Cell Cell;
 	private static XSSFRow Row;
-
+/**
+ * 
+ * @param Path
+ * @throws Exception
+ * 
+ * Setting the Excel file path & Workbook
+ */
 	public static void setExcelFile(String Path) throws Exception {
 		try {
 			FileInputStream ExcelFile = new FileInputStream(Path);
@@ -26,6 +32,16 @@ public class ExcelUtils {
 			DriverScript.bResult = false;
 		}
 	}
+	/**
+	 * 
+	 * @param RowNum
+	 * @param ColNum
+	 * @param SheetName
+	 * @return
+	 * @throws Exception
+	 * 
+	 * To get cell data from given RowNumber, ColumnNumber & SheetName 
+	 */
 
 	public static String getCellData(int RowNum, int ColNum, String SheetName)
 			throws Exception {
@@ -41,7 +57,12 @@ public class ExcelUtils {
 			return "";
 		}
 	}
-
+/**
+ * @param SheetName
+ * @return
+ * 
+ * To get the total number of rows in given Sheet 
+ */
 	public static int getRowCount(String SheetName) {
 		int iNumber = 0;
 		try {
@@ -54,7 +75,15 @@ public class ExcelUtils {
 		}
 		return iNumber;
 	}
-
+	/**
+	 * @param sTestCaseName
+	 * @param colNum
+	 * @param SheetName
+	 * @return
+	 * @throws Exception
+	 * 
+	 * To get the first row of the Test step for a particular Test Case
+	 */
 	public static int getRowContains(String sTestCaseName, int colNum,
 			String SheetName) throws Exception {
 		int iRowNum = 0;
@@ -74,7 +103,15 @@ public class ExcelUtils {
 		}
 		return iRowNum;
 	}
-
+	/**
+	 * @param SheetName
+	 * @param sTestCaseID
+	 * @param iTestCaseStart
+	 * @return
+	 * @throws Exception
+	 * 
+	 * To get the last row of the Test step for a particular Test Case
+	 */
 	public static int getTestStepsCount(String SheetName, String sTestCaseID,
 			int iTestCaseStart) throws Exception {
 		try {
@@ -95,7 +132,16 @@ public class ExcelUtils {
 			return 0;
 		}
 	}
-
+	/**
+	 * @param Result
+	 * @param RowNum
+	 * @param ColNum
+	 * @param SheetName
+	 * @throws Exception
+	 * 
+	 * To write data into Excel for given row, cell & sheet
+	 * Writing result of the test step to the result column for the particular test step
+	 */
 	@SuppressWarnings("static-access")
 	// This method is use to write value in the excel sheet
 	// This method accepts four arguments (Result, Row Number, Column Number &
